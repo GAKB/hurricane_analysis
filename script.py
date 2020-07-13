@@ -19,9 +19,8 @@ damages = ['Damages not recorded', '100M', 'Damages not recorded', '40M', '27.9M
 # deaths for each hurricane
 deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,318,107,65,19325,51,124,17,1836,125,87,45,133,603,138,3057,74]
 
-# write your update damages function here:
 
-#Before reading hint:
+# write your update damages function here:
 def update_damages(data):
     updated_damages = []
     factor = {"M": 10 ** 6, "B": 10 **9}
@@ -37,6 +36,16 @@ updated_damages = update_damages(damages)
 #print(updated_damages)
 
 # write your construct hurricane dictionary function here:
+def construct_dict(n = names, m = months, y = years, msw = max_sustained_winds, a = areas_affected, dmg = updated_damages, d = deaths):
+    hurricanes = {}
+    for i in range(0, len(n)):
+        hurricanes[n[i]] = {"Name": n[i], "Month": m[i], "Year": y[i], "Max Sustained Wind": msw[i], "Areas Affected": a[i], "Damage": dmg[i], "Deaths": d[i]}
+    return hurricanes
+
+hurricanes_by_name = construct_dict()
+
+#print(hurricanes_by_name["San Felipe II Okeechobee"])
+
 
 # write your construct hurricane by year dictionary function here:
 
