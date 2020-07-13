@@ -35,19 +35,31 @@ def update_damages(data):
 updated_damages = update_damages(damages)
 #print(updated_damages)
 
+
 # write your construct hurricane dictionary function here:
-def construct_dict(n = names, m = months, y = years, msw = max_sustained_winds, a = areas_affected, dmg = updated_damages, d = deaths):
+def construct_hurricanes(n = names, m = months, y = years, msw = max_sustained_winds, a = areas_affected, dmg = updated_damages, d = deaths):
     hurricanes = {}
     for i in range(0, len(n)):
         hurricanes[n[i]] = {"Name": n[i], "Month": m[i], "Year": y[i], "Max Sustained Wind": msw[i], "Areas Affected": a[i], "Damage": dmg[i], "Deaths": d[i]}
     return hurricanes
 
-hurricanes_by_name = construct_dict()
-
+hurricanes_by_name = construct_hurricanes()
 #print(hurricanes_by_name["San Felipe II Okeechobee"])
 
 
 # write your construct hurricane by year dictionary function here:
+def hurricanes_by_year(hurricanes_dct = hurricanes_by_name):
+    hurricanes = {}
+    for name, details in hurricanes_dct.items():
+        if details["Year"] in hurricanes.keys():
+            hurricanes[details["Year"]].append(details)
+            continue
+        hurricanes[details["Year"]] = [details]
+    return hurricanes
+
+hurricanes_by_year = hurricanes_by_year()
+#print(hurricanes_by_year[1933])
+
 
 # write your count affected areas function here:
 
