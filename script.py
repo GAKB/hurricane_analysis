@@ -20,67 +20,34 @@ damages = ['Damages not recorded', '100M', 'Damages not recorded', '40M', '27.9M
 deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,318,107,65,19325,51,124,17,1836,125,87,45,133,603,138,3057,74]
 
 # write your update damages function here:
-      
 
+#Before reading hint:
+def update_damages(data):
+    updated_damages = []
+    factor = {"M": 10 ** 6, "B": 10 **9}
+    for entry in data:
+        if entry == "Damages not recorded":
+            updated_damages.append(entry)
+            continue
+        updated_entry = float(entry.strip("MB")) * factor[entry.strip("0123456789.")]
+        updated_damages.append(updated_entry)
+    return updated_damages
 
-
-
-
+updated_damages = update_damages(damages)
+#print(updated_damages)
 
 # write your construct hurricane dictionary function here:
 
-
-
-
-
-
-
 # write your construct hurricane by year dictionary function here:
-
-
-
-
-
-
 
 # write your count affected areas function here:
 
-
-
-
-
-
-
 # write your find most affected area function here:
-
-
-
-
-
-
 
 # write your greatest number of deaths function here:
 
-
-
-
-
-
-
 # write your catgeorize by mortality function here:
 
-
-
-
-
-
-
 # write your greatest damage function here:
-
-
-
-
-
-
 
 # write your catgeorize by damage function here:
