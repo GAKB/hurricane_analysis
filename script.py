@@ -86,11 +86,22 @@ def count_areas_affected(hurricanes = hurricanes_by_name):
     return areas_count
 
 areas_affected_count =  count_areas_affected()
-print(areas_affected_count)
+#print(areas_affected_count)
 
 
 # write your find most affected area function here:
+def most_affected_area(areas_dict = areas_affected_count):
+    highest_count = 0
+    highest_area = ""
+    for area, count in areas_dict.items():
+        if count < highest_count:
+            continue
+        highest_count = count
+        highest_area = area
+    return highest_area, highest_count
 
+most_affected_area, most_affected_count = most_affected_area()
+print(most_affected_area, str(most_affected_count))
 
 # write your greatest number of deaths function here:
 
