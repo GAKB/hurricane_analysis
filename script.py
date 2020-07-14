@@ -37,13 +37,13 @@ updated_damages = update_damages(damages)
 
 
 # write your construct hurricane dictionary function here:
-def construct_hurricanes(n = names, m = months, y = years, msw = max_sustained_winds, a = areas_affected, dmg = updated_damages, d = deaths):
+def construct_hurricane_dictionary(n = names, m = months, y = years, msw = max_sustained_winds, a = areas_affected, dmg = updated_damages, d = deaths):
     hurricanes = {}
     for i in range(0, len(n)):
         hurricanes[n[i]] = {"Name": n[i], "Month": m[i], "Year": y[i], "Max Sustained Wind": msw[i], "Areas Affected": a[i], "Damage": dmg[i], "Deaths": d[i]}
     return hurricanes
 
-hurricanes_by_name = construct_hurricanes()
+hurricanes_by_name = construct_hurricane_dictionary()
 #print(hurricanes_by_name["San Felipe II Okeechobee"])
 
 
@@ -62,8 +62,35 @@ hurricanes_by_year = hurricanes_by_year()
 
 
 # write your count affected areas function here:
+    # Without using the dictionary:
+'''
+def count_areas_affected(areas = areas_affected):
+    areas_list = []
+    area_count = {}
+    for lst in areas:
+        for area in lst:
+            areas_list.append(area)
+    for area in areas_list:
+        area_count[area] = areas_list.count(area)
+    return area_count
+'''
+    # Using the dictionary
+def count_areas_affected(hurricanes = hurricanes_by_name):
+    areas_count = {}
+    for hurricane in hurricanes.values():
+        for area in hurricane["Areas Affected"]:
+            if area in areas_count:
+                areas_count[area] += 1
+                continue
+            areas_count[area] = 1
+    return areas_count
+
+areas_affected_count =  count_areas_affected()
+print(areas_affected_count)
+
 
 # write your find most affected area function here:
+
 
 # write your greatest number of deaths function here:
 
