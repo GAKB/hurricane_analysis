@@ -62,19 +62,6 @@ hurricanes_by_year = hurricanes_by_year()
 
 
 # write your count affected areas function here:
-    # Without using the dictionary:
-'''
-def count_areas_affected(areas = areas_affected):
-    areas_list = []
-    area_count = {}
-    for lst in areas:
-        for area in lst:
-            areas_list.append(area)
-    for area in areas_list:
-        area_count[area] = areas_list.count(area)
-    return area_count
-'''
-    # Using the dictionary
 def count_areas_affected(hurricanes = hurricanes_by_name):
     areas_count = {}
     for hurricane in hurricanes.values():
