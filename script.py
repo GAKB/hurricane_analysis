@@ -120,6 +120,20 @@ greatest_deaths_name, greatest_deaths_count = greatest_deaths()
 
 
 # write your catgeorize by mortality function here:
+def categorize_by_mortality(hurricanes = hurricanes_by_name):
+    mortality_scale = {0: 0, 1: 100, 2: 500, 3: 1000, 4: 10000}
+    hurricanes_by_mortality = {0: [], 1: [], 2: [], 3: [], 4: [], 5: []}
+    for hurricane in hurricanes.values():
+        if hurricane["Deaths"] > mortality_scale[4]:
+            hurricanes_by_mortality[5].append(hurricane)
+        for i in range(0, 4):
+            if mortality_scale[i] < hurricane["Deaths"] <= mortality_scale[i+1]:
+                hurricanes_by_mortality[i+1].append(hurricane)
+    return hurricanes_by_mortality
+
+hurricanes_by_mortality = categorize_by_mortality()
+#print(hurricanes_by_mortality[4])
+
 
 # write your greatest damage function here:
 
