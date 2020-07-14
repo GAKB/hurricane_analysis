@@ -90,14 +90,13 @@ areas_affected_count =  count_areas_affected()
 
 
 # write your find most affected area function here:
-def most_affected_area(areas_dict = areas_affected_count):
+def most_affected_area(areas_count = areas_affected_count):
     highest_count = 0
     highest_area = ""
-    for area, count in areas_dict.items():
-        if count < highest_count:
-            continue
-        highest_count = count
-        highest_area = area
+    for area, count in areas_count.items():
+        if count > highest_count:
+            highest_count = count
+            highest_area = area
     return highest_area, highest_count
 
 most_affected_area, most_affected_count = most_affected_area()
@@ -109,10 +108,9 @@ def greatest_deaths(hurricanes = hurricanes_by_name):
     highest_deaths = 0
     highest_name = ""
     for name, details in hurricanes.items():
-        if details["Deaths"] < highest_deaths:
-            continue
-        highest_deaths = details["Deaths"]
-        highest_name = name
+        if details["Deaths"] > highest_deaths:
+            highest_deaths = details["Deaths"]
+            highest_name = name
     return highest_name, highest_deaths
 
 greatest_deaths_name, greatest_deaths_count = greatest_deaths()
@@ -136,5 +134,19 @@ hurricanes_by_mortality = categorize_by_mortality()
 
 
 # write your greatest damage function here:
+def greatest_damage(hurricanes = hurricanes_by_name):
+    highest_name = ""
+    highest_damage = 0
+    for name, details in hurricanes.items():
+        if details["Damage"] == "Damages not recorded":
+            continue
+        if details["Damage"] > highest_damage:
+            highest_damage = details["Damage"]
+            highest_name = name
+    return highest_name, highest_damage
+
+greatest_damage_name, greatest_damage_cost = greatest_damage()
+#print(greatest_damage_name, greatest_damage_cost)
+
 
 # write your catgeorize by damage function here:
