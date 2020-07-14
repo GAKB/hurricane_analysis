@@ -116,8 +116,8 @@ def categorize_by_mortality(hurricanes = hurricanes_by_name):
                 hurricanes_by_mortality[i+1].append(hurricane)
     return hurricanes_by_mortality
 
-hurricanes_by_mortality = categorize_by_mortality()
-#print(hurricanes_by_mortality[4])
+hurricanes_by_mortality_rating = categorize_by_mortality()
+#print(hurricanes_by_mortality_rating[4])
 
 
 # write your greatest damage function here:
@@ -137,3 +137,20 @@ greatest_damage_name, greatest_damage_cost = greatest_damage()
 
 
 # write your catgeorize by damage function here:
+def categorize_by_damage(hurricanes = hurricanes_by_name):
+    damage_scale = {0: 0, 1: 100000000, 2: 1000000000, 3: 10000000000, 4: 50000000000}
+    hurricanes_by_damage = {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], "Insufficient Data": []}
+    for hurricane in hurricanes.values():
+        if hurricane["Damage"] == "Damages not recorded":
+            hurricanes_by_damage["Insufficient Data"].append(hurricane)
+            continue
+        if hurricane["Damage"] > damage_scale[4]:
+            hurricanes_by_damage[5].append(hurricane)
+        for i in range(0, 4):
+            if damage_scale[i] < hurricane["Damage"] <= damage_scale[i+1]:
+                hurricanes_by_damage[i+1].append(hurricane)
+    return hurricanes_by_damage
+
+hurricanes_by_damage_rating = categorize_by_damage()
+#print(hurricanes_by_damage_rating[3])
+#print(hurricanes_by_damage_rating["Insufficient Data"])
